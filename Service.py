@@ -4,6 +4,7 @@ from bluez_peripheral.gatt.characteristic import characteristic, CharacteristicF
 import wifiutils
 import struct
 
+#this service handles the transfer of wifi data
 class WifiService(Service):
     ssid = ""
     psk = ""
@@ -11,6 +12,7 @@ class WifiService(Service):
     def __init__(self):
         super().__init__("844F", True)
 
+    #method to change wifi credentials
     def setWifi(self):
         print("Wifi wird gestartet mit")
         print("SSID: "+self.ssid)
@@ -19,7 +21,8 @@ class WifiService(Service):
             wifiutils.setWifi(self.ssid,self.psk)
         except Exception as e:
             print(e)
-        
+
+    #characteristic to change ssid    
     @characteristic("2C33", CharFlags.WRITE).setter
     def ssidCharacteristic(self, value,options):
         try:
@@ -29,7 +32,7 @@ class WifiService(Service):
         except:
             print("ssid: received invalid message")
         
-
+    #characteristic to change psk/key 
     @characteristic("2C34", CharFlags.WRITE).setter
     def pskCharacteristic(self, value,options):
         try:

@@ -6,9 +6,9 @@ from Service import WifiService
 import asyncio
 
 async def main():
-    # Alternativly you can request this bus directly from dbus_next.
     bus = await get_message_bus()
 
+    #create the service and register it to the bus
     service = WifiService()
     await service.register(bus)
 
@@ -18,8 +18,8 @@ async def main():
     await agent.register(bus)
 
     adapter = await Adapter.get_first(bus)
-
-    # Start an advert that will last for 60 seconds.
+    
+    #advert with infinite timeout
     advert = Advertisement("Blackmirror", ["844F"], 0x0A02, 0)
     await advert.register(bus, adapter)
 
