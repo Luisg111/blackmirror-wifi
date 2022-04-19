@@ -5,6 +5,9 @@ from Service import WifiService
 
 import asyncio
 
+#Version 1.1 - 19.04.2022
+#Author: Luis Gutzeit
+#some parts of this code have been taken from the official documentation of bluez_peripheral
 async def main():
     bus = await get_message_bus()
 

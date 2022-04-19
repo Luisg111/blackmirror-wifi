@@ -1,5 +1,8 @@
 import os
 
+#Version 1.1 - 19.04.2022
+#Author: Luis Gutzeit
+
 #sets the wifi in Linux to the specified ssid/psk
 #attention: this removes all previosly defined wifi networks
 def setWifi(ssid,psk):

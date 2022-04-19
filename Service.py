@@ -4,6 +4,10 @@ from bluez_peripheral.gatt.characteristic import characteristic, CharacteristicF
 import wifiutils
 import struct
 
+#Version 1.1 - 19.04.2022
+#Author: Luis Gutzeit
+#some parts of this code have been taken from the official documentation of bluez_peripheral
+
 #this service handles the transfer of wifi data
 class WifiService(Service):
     ssid = ""
