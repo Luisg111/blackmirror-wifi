@@ -18,9 +18,9 @@ class WifiService(Service):
 
     #method to change wifi credentials
     def setWifi(self):
-        print("Wifi wird gestartet mit")
-        print("SSID: "+self.ssid)
-        print("PSK: "+self.psk)
+        #print("Wifi wird gestartet mit")
+        #print("SSID: "+self.ssid)
+        #print("PSK: "+self.psk)
         try:
             wifiutils.setWifi(self.ssid,self.psk)
         except Exception as e:
@@ -31,7 +31,7 @@ class WifiService(Service):
     def ssidCharacteristic(self, value,options):
         try:
             stringValue = value.decode("utf-8")
-            print("ssid: "+ stringValue+"\n")
+            #print("ssid: "+ stringValue+"\n")
             self.ssid = stringValue
         except:
             print("ssid: received invalid message")
@@ -41,9 +41,10 @@ class WifiService(Service):
     def pskCharacteristic(self, value,options):
         try:
             stringValue = value.decode("utf-8")
-            print("psk: "+ stringValue + "\n")
+            #print("psk: "+ stringValue + "\n")
             self.psk = stringValue
-        except: print("psk: received invalid message")
+        except: 
+            print("psk: received invalid message")
         self.setWifi()
 
 
